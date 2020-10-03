@@ -1,0 +1,46 @@
+body {
+    font-family: Verdana, Tahoma, sans-serif;
+    background: linear-gradient(to right, #9790d8, #33cabb);
+}
+
+.navbar .navbar-brand {
+    color: #30706d!important;
+}
+
+.card-signin {
+    border: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.card-signin .card-title {
+    margin-bottom: 2rem;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+    padding: 2rem;
+}
+
+@media (min-width: 1200px) {
+    .form-inline .input-group {
+        width: 300px;
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .dropdown-menu.action-form {
+        width: 100%;
+        padding: 10px 15px;
+        background: transparent;
+        border: none;
+    }
+    .navbar .form-inline {
+        display: block;
+    }
+    .navbar .input-group {
+        width: 100%;
+    }
+}
