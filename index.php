@@ -1,3 +1,11 @@
+<?php
+if(isset($_COOKIE["ID"]) && isset($_COOKIE["UserName"])) {
+    if(!$_COOKIE["ID"]){
+        header("Location: dashboard.php");
+        exit;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +29,7 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h6 class="card-title text-center">Login details</h6>
-                        <form>
+                        <form action="php/login.php" method="POST">
                             <div class="form-group">
                                 <label for="userType">Log in as </label>
                                 <div class="custom-control custom-radio custom-control-inline">
@@ -40,21 +48,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email address" required="required">
+                                <input type="email" name="email" class="form-control" placeholder="Email address" required="required">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" required="required">
-                            </div>
-                            <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                <input type="password" name="password" class="form-control" placeholder="Password" required="required">
                             </div>
                             <button class="btn btn-primary btn-block" type="submit">Log in</button>
                             <div>
-                                <span class="psw"><a href="#">Forgot password?</a></span>
-                            </div>
-                            <div>
-                                <span class="psw"><a href="sign_up.html">Register as new user</a></span>
+                                <span class="psw"><a href="register.php">Register as new user</a></span>
                             </div>
                         </form>
                     </div>
