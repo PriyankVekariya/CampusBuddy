@@ -1,3 +1,11 @@
+<?php
+if(isset($_COOKIE["ID"]) && isset($_COOKIE["UserName"])) {
+    if($_COOKIE["ID"] != ""){
+        header("Location: dashboard.php");
+        exit;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +29,9 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h6 class="card-title text-center">Register details</h6>
-                        <form class="form-signin">
+                        <form id="signUpFrom" action="php/register.php" method="POST">
                             <div class="form-group">
+                                <label for="userType">Register as</label>
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" class="custom-control-input" value="1" id="defaultInline1" name="userType" required>
                                     <label class="custom-control-label" for="defaultInline1">Student</label>
@@ -32,30 +41,25 @@
                                     <input type="radio" class="custom-control-input" value="2" id="defaultInline2" name="userType" required>
                                     <label class="custom-control-label" for="defaultInline2">Faculty</label>
                                 </div>
-
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" class="custom-control-input" value="3" id="defaultInline3" name="userType" required>
-                                    <label class="custom-control-label" for="defaultInline3">Admin</label>
-                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First name" required="required">
+                                <input type="text" class="form-control" name="firstName" placeholder="First name" required="required">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last name" required="required">
+                                <input type="text" class="form-control" name="lastName" placeholder="Last name" required="required">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control email" placeholder="Email address" required="required">
+                                <input type="email" class="form-control email" name="email" placeholder="Email address" required="required">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" required="required">
+                                <input type="password" class="form-control" id="pass" name="password" placeholder="Password" required="required">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Confirm Password" required="required">
+                                <input type="password" class="form-control" id="confirmpass" name="confirmPassword" placeholder="Confirm Password" required="required">
                             </div>
                             <button class="btn btn-primary btn-block" type="submit">Create account</button>
                             <div>
-                                <span class="psw"><a href="index.html">Registered user? Log in</a></span>
+                                <span class="psw"><a href="index.php">Registered user? Log in</a></span>
                             </div>
                         </form>
                     </div>
