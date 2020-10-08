@@ -27,6 +27,7 @@ if ($conn->query($sql) === TRUE) {
         setcookie("ID", $id, time() + (86400 * 30), "/");
     }
     setcookie("UserName", $firstName . " " . $lastName, time() + (86400 * 30), "/");
+    setcookie("UserType", (string)$userType, time() + (86400 * 30), "/");
     header("Location: ../dashboard.php");
     $conn->close();
     exit;

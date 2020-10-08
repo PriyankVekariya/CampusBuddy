@@ -1,9 +1,9 @@
 <?php
-if(!isset($_COOKIE["ID"]) && !isset($_COOKIE["UserName"])) {
+if (!isset($_COOKIE["ID"]) && !isset($_COOKIE["UserName"])) {
     header("Location: index.php");
     exit;
 } else {
-    if($_COOKIE["ID"] == ""){
+    if ($_COOKIE["ID"] == "") {
         header("Location: index.php");
         exit;
     }
@@ -25,12 +25,27 @@ if(!isset($_COOKIE["ID"]) && !isset($_COOKIE["UserName"])) {
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="" class="navbar-brand">CampusBuddy</a>
+        <label><?php echo $_COOKIE["UserName"];?></label>
         <form action="php/logout.php" method="POST">
             <button class="btn btn-primary" type="submit">Logout</button>
         </form>
     </nav>
     <div class="container">
         <div class="row">
+            <?php
+            if ($_COOKIE["UserType"] == "3") { ?>
+                <p>You are admin</p>
+            <?php
+            } else if ($_COOKIE["UserType"] == "2") { ?>
+                <p>You are Faculty</p>
+            <?php
+            } else if ($_COOKIE["UserType"] == "1") { ?>
+                <p>You are student</p>
+            <?php
+            } else { ?>
+                <p>Please login first</p>
+            <?php
+            } ?>
         </div>
     </div>
 </body>
