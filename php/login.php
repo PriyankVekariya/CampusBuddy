@@ -18,6 +18,7 @@ if ($result->num_rows > 0) {
     echo "id: " . $row["id"]. " - Name: " . $row["first_name"]. " " . $row["last_name"]. "<br>";
     setcookie("ID", $row["id"], time() + (86400 * 30), "/");
     setcookie("UserName", $row["first_name"] . " " . $row["last_name"], time() + (86400 * 30), "/");
+    setcookie("UserType", (string)$usertype, time() + (86400 * 30), "/");
     $conn->close();
     header("Location: ../dashboard.php");
     exit;
