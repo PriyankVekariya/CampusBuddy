@@ -29,6 +29,8 @@ if ($conn->query($sql) === TRUE) {
     }
     setcookie("UserName", $firstName . " " . $lastName, time() + (86400 * 30), "/");
      $_SESSION["name"]=$email;
+
+    setcookie("UserType", (string)$userType, time() + (86400 * 30), "/");
     header("Location: ../dashboard.php");
     $conn->close();
     exit;
