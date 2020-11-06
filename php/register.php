@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pass = $_POST["password"];
 $confirmPass = $_POST["confirmPassword"];
 if ($pass != $confirmPass) {
@@ -27,6 +28,8 @@ if ($conn->query($sql) === TRUE) {
         setcookie("ID", $id, time() + (86400 * 30), "/");
     }
     setcookie("UserName", $firstName . " " . $lastName, time() + (86400 * 30), "/");
+     $_SESSION["name"]=$email;
+
     setcookie("UserType", (string)$userType, time() + (86400 * 30), "/");
     header("Location: ../dashboard.php");
     $conn->close();
