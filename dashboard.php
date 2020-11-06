@@ -1,4 +1,5 @@
 <?php
+session_start();
 if(!isset($_COOKIE["ID"]) && !isset($_COOKIE["UserName"])) {
     header("Location: index.php");
     exit;
@@ -23,16 +24,39 @@ if(!isset($_COOKIE["ID"]) && !isset($_COOKIE["UserName"])) {
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="" class="navbar-brand">CampusBuddy</a>
-        <form action="php/logout.php" method="POST">
-            <button class="btn btn-primary" type="submit">Logout</button>
-        </form>
-    </nav>
-    <div class="container">
-        <div class="row">
+    <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">CampusBuddy</a>
+    <form class="form-inline" action="php/logout.php" method="POST">
+        <p><span style="color:darkolivegreen;font-weight:bold"><?php echo($_SESSION["name"]); ?></span></p>
+       <button class="btn btn-primary" type="submit">Logout</button>
+    </form>
+  </nav>
+<section>
+        <main class="py-4">
+        <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h2>All questions</h2>
+                            <div class="ml-auto">
+                            <a href="question.php" class="btn btn-primary">Ask new question</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="media post">
+                             <div class="d-flex flex-column counters">
+                             <p>hello</p>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        </div>
+        </main>
+</section>
 </body>
 
 </html>

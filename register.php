@@ -18,7 +18,6 @@ if(isset($_COOKIE["ID"]) && isset($_COOKIE["UserName"])) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="css/Bootstrap/js/bootstrap.min.js"></script>
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a href="index.html" class="navbar-brand">CampusBuddy</a>
@@ -41,7 +40,7 @@ if(isset($_COOKIE["ID"]) && isset($_COOKIE["UserName"])) {
                                     <input type="radio" class="custom-control-input" value="2" id="defaultInline2" name="userType" required>
                                     <label class="custom-control-label" for="defaultInline2">Faculty</label>
                                 </div>
-                            </div>
+                            </div>  
                             <div class="form-group">
                                 <input type="text" class="form-control" name="firstName" placeholder="First name" required="required">
                             </div>

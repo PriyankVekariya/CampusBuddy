@@ -22,6 +22,12 @@ body {
 .card-signin .card-body {
     padding: 2rem;
 }
+.bs-example{
+        margin: 20px;        
+    }
+btn btn-primary{
+    float:right;
+}
 
 @media (min-width: 1200px) {
     .form-inline .input-group {

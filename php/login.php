@@ -1,4 +1,5 @@
 <?php
+session_start();
 $email = $_POST['email'];
 $pass = $_POST['password'];
 $usertype = $_POST['userType'];
@@ -14,11 +15,14 @@ $sql = "SELECT id, first_name, last_name FROM users WHERE email='" . $email . "'
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
+
   while($row = $result->fetch_assoc()) {
     echo "id: " . $row["id"]. " - Name: " . $row["first_name"]. " " . $row["last_name"]. "<br>";
     setcookie("ID", $row["id"], time() + (86400 * 30), "/");
     setcookie("UserName", $row["first_name"] . " " . $row["last_name"], time() + (86400 * 30), "/");
+    $_SESSION["name"]=$email;
     $conn->close();
+
     header("Location: ../dashboard.php");
     exit;
   }
