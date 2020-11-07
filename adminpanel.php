@@ -25,7 +25,7 @@
     <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-success">Approve</a>
+    <a href="Facultypanel.php" class="btn btn-success">Approve</a>
     <a href="#" class="btn btn-danger">Reject</a>
     </div>
     </div>
