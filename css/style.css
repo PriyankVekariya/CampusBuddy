@@ -1,10 +1,16 @@
 body {
     font-family: Verdana, Tahoma, sans-serif;
-    background: linear-gradient(to right, #9790d8, #33cabb);
+    background: linear-gradient(to right, #9790d8, #33cabb) fixed;
 }
 
 .navbar .navbar-brand {
-    color: #30706d!important;
+    color: #006c7a!important;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.spacing {
+    margin-bottom: 10px;
 }
 
 .card-signin {
@@ -22,11 +28,13 @@ body {
 .card-signin .card-body {
     padding: 2rem;
 }
-.bs-example{
-        margin: 20px;        
-    }
-btn btn-primary{
-    float:right;
+
+.bs-example {
+    margin: 20px;
+}
+
+.btn .btn-primary {
+    float: right;
 }
 
 @media (min-width: 1200px) {
@@ -36,7 +44,7 @@ btn btn-primary{
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
     .navbar .dropdown-menu.action-form {
         width: 100%;
         padding: 10px 15px;
@@ -48,5 +56,11 @@ btn btn-primary{
     }
     .navbar .input-group {
         width: 100%;
+    }
+    * {
+        font-size: 15px;
+    }
+    h4 {
+        font-size: 20px !important;
     }
 }

@@ -15,7 +15,6 @@ if(isset($_COOKIE["ID"]) && isset($_COOKIE["UserName"])) {
     <title>Login page</title>
     <link rel="stylesheet" href="css/Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="css/Bootstrap/js/bootstrap.min.js"></script>
 </head>
 
