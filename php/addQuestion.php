@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 $query = "INSERT INTO temp_questions(user_id, subject_id, title, question_description) VALUES (" . $userId . ", " . $subId . ", '" . $title . "', '" . $questionText . "')";
 $message = "Your question is submitted successfully having title as " . $title .".";
 $notification = "INSERT INTO notifications(user_id, message) VALUES(" . $userId . ", '" . $message . "')";
-$deleteNotification = "DELETE FROM notifications WHERE timestamp < now() - interval 1 day";
+$deleteNotification = "DELETE FROM notifications WHERE timestamp < now() - interval 5 day";
 $deletionResult = $conn->query($deleteNotification);
 
 $result = $conn->query($query);
@@ -22,7 +22,7 @@ $result = $conn->query($query);
 if($result){
     $notificationResult = $conn->query($notification);
     $conn->close();
-    header("Location: ../dashboard.php");
+    header("Location: ../notifications.php");
 } else {
     $conn->close();
     header("Location: ../error.php");

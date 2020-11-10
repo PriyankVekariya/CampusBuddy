@@ -1,4 +1,22 @@
 <!DOCTYPE html>
+<?php
+if (!isset($_COOKIE["ID"]) && !isset($_COOKIE["UserName"])) {
+    header("Location: index.php");
+    exit;
+} else {
+    if ($_COOKIE["ID"] == "") {
+        header("Location: index.php");
+        exit;
+    }
+}
+if ($_COOKIE["UserType"] != "2") {
+    header("Location: error.php");
+    exit;
+}
+$question = $_POST['question'];
+$question_id = $_POST['question_id'];
+$student_id = $_POST['student_id'];
+?>
 <html lang="en">
 
 <head>
@@ -35,23 +53,19 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form action="#" method="POST">
-                                    <input type="hidden" name="_token" value="bNOwFIwINecFiufSqmhuJxBnsqR9vd3IQTiNJoco">
-                                    <div class="form-group">
-                                        <label for="question-title">Title</label>
-                                        <input id="question-title" name="title" type="text" class="form-control " value="" required="required">
-                                    </div>
-                                    <input type="hidden" name="_token" value="bNOwFIwINecFiufSqmhuJxBnsqR9vd3IQTiNJoco">
+                                <form action="php/addAnswer.php" method="POST">
+                                    <input type="hidden" name="student_id" value="<?php echo $student_id;?>">
+                                    <input type="hidden" name="question_id" value="<?php echo $question_id;?>">
                                     <div class="form-group">
                                         <label for="question-title">Question</label>
-                                        <input id="question-title" name="title" type="text" class="form-control " value="" required="required">
+                                        <input id="question-title" name="question" type="text" class="form-control" value="<?php echo $question;?>" disabled="disabled">
                                     </div>
                                     <div class="form-group">
                                         <label>Explain your answer</label>
-                                        <textarea class="form-control" rows="10" id="comment" name="text" placeholder="Explain your answer here...."></textarea>
+                                        <textarea class="form-control" rows="10" maxlength="500" name="answerText" placeholder="Write your answer here...."></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-info" href="dashboard.php">Submit</button>
+                                        <input type="submit" class="btn btn-primary" value="Submit">
                                     </div>
                                 </form>
                             </div>

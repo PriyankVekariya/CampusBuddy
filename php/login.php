@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
       $subjectResult = $conn->query($sql2);
       if($subjectResult->num_rows > 0){
         while($row2 = $subjectResult->fetch_assoc()){
-          setcookie("SubId", (string)$row["subject_id"], time() + (86400 * 30), "/");
+          setcookie("SubId", (string)$row2["subject_id"], time() + (86400 * 30), "/");
         }
       }
     }
@@ -34,6 +34,6 @@ if ($result->num_rows > 0) {
     exit;
   }
 } else {
-  header("Location: ../error.php");
+  header("Location: ../error.php?login=false");
 }
 $conn->close();
