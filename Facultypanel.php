@@ -12,6 +12,19 @@ if ($_COOKIE["UserType"] != "2") {
     header("Location: error.php");
     exit;
 }
+
+function executeQuery($query)
+{
+    $conn = new mysqli("localhost", "rootuser", "toor", "campus_buddy");
+    if ($conn->connect_error) {
+        header("Location: error.php");
+    }
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
+$sub_id = (int)$_COOKIE['SubId'];
+$facultyQuery = "SELECT * FROM questions WHERE (subject_id=" . $sub_id . " AND answered=false)";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +42,8 @@ if ($_COOKIE["UserType"] != "2") {
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">CampusBuddy</a>
         <form class="form-inline" action="php/logout.php" method="POST">
-            <label style="margin-right: 5px; font-weight: bold;"><?php echo ($_COOKIE["UserName"]); ?></label>
+        <a href="notifications.php" class="btn btn-outline-primary">Notifications</a>
+            <label style="margin: 5px; font-weight: bold;"><?php echo ($_COOKIE["UserName"]); ?></label>
             <button class="btn btn-primary" type="submit">Logout</button>
         </form>
     </nav>
@@ -43,17 +57,36 @@ if ($_COOKIE["UserType"] != "2") {
                                 <div class="d-flex align-items-center">
                                     <h2>All unanswered question</h2>
                                     <div class="ml-auto">
-                                        <a href="Facultypanel.php" class="btn btn-outline-primary">Answer questions</a>
+                                        <a href="dashboard.php" class="btn btn-outline-primary">Back to dashboard</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="media post">
-                                    <div class="d-flex align-items-center">
-                                        <p>question</p>
+                            <?php $facultyResult = executeQuery($facultyQuery);
+                            if ($facultyResult->num_rows > 0) {
+                                while ($row = $facultyResult->fetch_assoc()) {
+                                    $que_datetime = DateTime::createFromFormat("Y-m-d H:i:s", $row["timestamp"]); ?>
+                                    <div class="card card-body">
+                                        <div class="media post">
+                                            <form action="answer.php" id="<?php echo $row['id']; ?>" method="POST">
+                                                <input type="text" class="form-control" disabled="disabled" name="quetitle" value="<?php echo $row['title']; ?>"/>
+                                                <p><?php echo $que_datetime->format('d/m/y, h:i:s A'); ?></p>
+                                                <input type="textarea" class="form-control" name="question" value="<?php echo $row['question_description']; ?>"/>
+                                                <input type="hidden" name="question_id" value="<?php echo $row['id']; ?>" /><br/>
+                                                <input type="hidden" name="student_id" value="<?php echo $row['user_id']; ?>" /><br/>
+                                                <input type="submit" class="btn btn-primary" value="Give answer" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                <?php }
+                            } else { ?>
+                                <div class="card-body">
+                                    <div class="media post">
+                                        <div class="d-flex align-items-center">
+                                            <p>No questions to answer</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

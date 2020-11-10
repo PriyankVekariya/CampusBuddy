@@ -1,3 +1,9 @@
+<?php 
+$login_failed = "";
+if (isset($_GET['login'])) {
+    $login_failed = "Please check your credentials.";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,7 +31,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card card-body">
-                                <h4>Something went wrong.</h4>
+                                <h4><?php echo ($login_failed === "") ? "Something went wrong." : $login_failed ?></h4>
                             </div>
                         </div>
                     </div>

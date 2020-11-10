@@ -9,6 +9,11 @@ body {
     font-weight: bold;
 }
 
+.username {
+    color: rgb(0, 94, 131);
+    font-weight: bold;
+}
+
 .spacing {
     margin-bottom: 10px;
 }

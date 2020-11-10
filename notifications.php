@@ -9,7 +9,11 @@ if (!isset($_COOKIE["ID"]) && !isset($_COOKIE["UserName"])) {
     }
 }
 $user_id = $_COOKIE['ID'];
-$notificationsQuery = "SELECT * FROM notifications WHERE user_id=" . $user_id;
+$notificationsQuery = "SELECT * FROM notifications WHERE user_id=" . $user_id . " ORDER BY timestamp DESC";
+
+$deleteNotification = "DELETE FROM notifications WHERE timestamp < now() - interval 5 day";
+$deletionResult = executeQuery($deleteNotification);
+
 function executeQuery($query)
 {
     $conn = new mysqli("localhost", "rootuser", "toor", "campus_buddy");
@@ -37,8 +41,8 @@ function executeQuery($query)
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">CampusBuddy</a>
         <form class="form-inline" action="php/logout.php" method="POST">
-            <a href="dashboard.php" class="btn btn-outline-primary">Back to all questions</a>
-            <label style="margin-right: 5px; font-weight: bold;"><?php echo ($_COOKIE["UserName"]); ?></label>
+            <a href="dashboard.php" class="btn btn-outline-primary">Back to dashboard</a>
+            <label style="margin: 5px; font-weight: bold;"><?php echo ($_COOKIE["UserName"]); ?></label>
             <button class="btn btn-primary" type="submit">Logout</button>
         </form>
     </nav>
