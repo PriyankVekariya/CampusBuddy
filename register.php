@@ -12,7 +12,8 @@ $subjectsQuery = "SELECT departments.dept_id, departments.dept_name, subjects.su
     LEFT JOIN subjects ON departments.dept_id = subjects.dept_id
     ORDER BY departments.dept_name";
 
-function executeQuery($query){
+function executeQuery($query)
+{
     $conn = new mysqli("localhost", "rootuser", "toor", "campus_buddy");
     if ($conn->connect_error) {
         header("Location: error.php");
@@ -33,12 +34,13 @@ function executeQuery($query){
     <link rel="stylesheet" href="css/Bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="css/Bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function checkPassword(form) {
             password = form.password.value;
             confirmPassword = form.confirmPassword.value;
             if (password != confirmPassword) {
-                alert("Password did not match: Please try again...")
+                alert("Password did not match: Please try again...");
                 return false;
             } else {
                 return true;

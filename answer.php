@@ -13,7 +13,7 @@ if ($_COOKIE["UserType"] != "2") {
     header("Location: error.php");
     exit;
 }
-$question = $_POST['question'];
+$question_desc = $_POST['question_desc'];
 $question_id = $_POST['question_id'];
 $student_id = $_POST['student_id'];
 ?>
@@ -57,8 +57,8 @@ $student_id = $_POST['student_id'];
                                     <input type="hidden" name="student_id" value="<?php echo $student_id;?>">
                                     <input type="hidden" name="question_id" value="<?php echo $question_id;?>">
                                     <div class="form-group">
-                                        <label for="question-title">Question</label>
-                                        <input id="question-title" name="question" type="text" class="form-control" value="<?php echo $question;?>" disabled="disabled">
+                                        <label>Question</label>
+                                        <input name="question" type="textarea" class="form-control" value="<?php echo $question_desc;?>" disabled="disabled">
                                     </div>
                                     <div class="form-group">
                                         <label>Explain your answer</label>

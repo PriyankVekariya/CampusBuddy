@@ -67,10 +67,10 @@ $facultyQuery = "SELECT * FROM questions WHERE (subject_id=" . $sub_id . " AND a
                                     $que_datetime = DateTime::createFromFormat("Y-m-d H:i:s", $row["timestamp"]); ?>
                                     <div class="card card-body">
                                         <div class="media post">
-                                            <form action="answer.php" id="<?php echo $row['id']; ?>" method="POST">
+                                            <form action="answer.php" method="POST">
                                                 <input type="text" class="form-control" disabled="disabled" name="quetitle" value="<?php echo $row['title']; ?>"/>
                                                 <p><?php echo $que_datetime->format('d/m/y, h:i:s A'); ?></p>
-                                                <input type="textarea" class="form-control" name="question" value="<?php echo $row['question_description']; ?>"/>
+                                                <input type="textarea" class="form-control" disabled="disabled" name="question_desc" value="<?php echo $row['question_description']; ?>"/>
                                                 <input type="hidden" name="question_id" value="<?php echo $row['id']; ?>" /><br/>
                                                 <input type="hidden" name="student_id" value="<?php echo $row['user_id']; ?>" /><br/>
                                                 <input type="submit" class="btn btn-primary" value="Give answer" />

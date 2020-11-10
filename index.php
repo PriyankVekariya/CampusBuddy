@@ -35,12 +35,10 @@ if(isset($_COOKIE["ID"]) && isset($_COOKIE["UserName"])) {
                                     <input type="radio" class="custom-control-input" value="1" id="defaultInline1" name="userType" required>
                                     <label class="custom-control-label" for="defaultInline1">Student</label>
                                 </div>
-
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" class="custom-control-input" value="2" id="defaultInline2" name="userType" required>
                                     <label class="custom-control-label" for="defaultInline2">Faculty</label>
                                 </div>
-
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" class="custom-control-input" value="3" id="defaultInline3" name="userType" required>
                                     <label class="custom-control-label" for="defaultInline3">Admin</label>

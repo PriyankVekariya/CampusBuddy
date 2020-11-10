@@ -1,4 +1,4 @@
-<?php 
+<?php
 $login_failed = "";
 if (isset($_GET['login'])) {
     $login_failed = "Please check your credentials.";
@@ -20,9 +20,14 @@ if (isset($_GET['login'])) {
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">CampusBuddy</a>
-        <form class="form-inline" action="php/logout.php" method="POST">
-            <button class="btn btn-primary" type="submit">Logout</button>
-        </form>
+        <?php
+        if (isset($_COOKIE["ID"])) {
+            if ($_COOKIE["ID"] != "") { ?>
+                <form class="form-inline" action="php/logout.php" method="POST">
+                    <button class="btn btn-primary" type="submit">Logout</button>
+                </form>
+        <?php }
+        } ?>
     </nav>
     <section>
         <main class="py-4">
@@ -31,7 +36,7 @@ if (isset($_GET['login'])) {
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card card-body">
-                                <h4><?php echo ($login_failed === "") ? "Something went wrong." : $login_failed ?></h4>
+                                <h4><?php echo ($login_failed === "") ? "Something went wrong." : $login_failed; ?></h4>
                             </div>
                         </div>
                     </div>
@@ -40,4 +45,5 @@ if (isset($_GET['login'])) {
         </main>
     </section>
 </body>
+
 </html>
