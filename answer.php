@@ -13,9 +13,28 @@ if ($_COOKIE["UserType"] != "2") {
     header("Location: error.php");
     exit;
 }
-$question_desc = $_POST['question_desc'];
+function executeQuery($query)
+{
+    $conn = new mysqli("localhost", "rootuser", "toor", "campus_buddy");
+    if ($conn->connect_error) {
+        header("Location: error.php");
+    }
+    $result = $conn->query($query);
+    $conn->close();
+    return $result;
+}
 $question_id = $_POST['question_id'];
 $student_id = $_POST['student_id'];
+$questionQuery = "SELECT question_description FROM questions WHERE id=" . $question_id;
+$questionResult = executeQuery($questionQuery);
+$question_desc = "";
+if ($questionResult->num_rows > 0) {
+    while ($row = $questionResult->fetch_assoc()) {
+        $question_desc = $row['question_description'];
+    }
+}else{
+    header("Location: error.php");
+}
 ?>
 <html lang="en">
 
@@ -54,11 +73,11 @@ $student_id = $_POST['student_id'];
                             </div>
                             <div class="card-body">
                                 <form action="php/addAnswer.php" method="POST">
-                                    <input type="hidden" name="student_id" value="<?php echo $student_id;?>">
-                                    <input type="hidden" name="question_id" value="<?php echo $question_id;?>">
+                                    <input type="hidden" name="student_id" value="<?php echo $student_id; ?>">
+                                    <input type="hidden" name="question_id" value="<?php echo $question_id; ?>">
                                     <div class="form-group">
                                         <label>Question</label>
-                                        <input name="question" type="textarea" class="form-control" value="<?php echo $question_desc;?>" disabled="disabled">
+                                        <input name="question" type="textarea" rows="10" class="form-control" value="<?php echo $question_desc; ?>" disabled="disabled">
                                     </div>
                                     <div class="form-group">
                                         <label>Explain your answer</label>

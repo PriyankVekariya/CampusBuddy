@@ -134,7 +134,7 @@ if (isset($_GET['rejectQuestion'])) {
                             </div>
                             <table border="0" class="card card-body">
                                 <tr>
-                                    <th>Departnemt Name</th>
+                                    <th>Departnemt Name </th>
                                     <th>Subject Name</th>
                                 </tr>
                                 <?php $subjectResult = executeQuery($subjectsQuery);
@@ -155,7 +155,7 @@ if (isset($_GET['rejectQuestion'])) {
                                             </select>
                                         </td>
                                         <td><input type="text" class="form-control" name="subName" placeholder="Enter subject name" required="required" /></td>
-                                        <td><input type="submit" class="btn btn-primary" value="Add subject" /></td>
+                                        <td><input type="submit" class="btn btn-primary form-control" value="Add subject" /></td>
                                     </form>
                                 </tr>
                             </table>
